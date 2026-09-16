@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carta — LUCA PIZZA BMX</title>
+  <meta name="description" content="Carta de LUCA PIZZA BMX: pizzas, lomos, calzones, hamburguesas, strombolis y panchos.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="assets/brand/favicon-32.png">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/anton-400.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-400.woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/carta.css">
+</head>
+<body>
+
+  <!-- Barra de herramientas (no se imprime) -->
+  <div class="toolbar">
+    <a href="index.html">← Volver a la web</a>
+    <div>
+      <button type="button" data-theme-toggle>Versión clara (ahorra tinta)</button>
+      <button type="button" class="primary" onclick="print()">Imprimir / Guardar PDF</button>
+    </div>
+  </div>
+
+  <!-- ============================ PÁGINA 1 -->
+  <section class="sheet">
+    <header class="c-head">
+      <img class="c-logo" data-brand="logoWordmark" alt="LUCA PIZZA">
+      <div class="c-head__meta">
+        <p class="c-mono">Pizzería artesanal · Pista BMX</p>
+        <p class="c-mono">Est. <span data-est></span> — Carta</p>
+      </div>
+    </header>
+
+    <div class="c-hero">
+      <figure class="c-hero__img"><img data-img-src="pizzaLuca" alt=""></figure>
+      <div class="c-hero__txt">
+        <p class="c-marker">La de la casa</p>
+        <h1 class="c-display c-hero__name" data-f-name></h1>
+        <p class="c-hero__ing" data-f-ing></p>
+        <p class="c-display c-hero__price" data-f-price></p>
+      </div>
+    </div>
+
+    <div class="c-grid" data-col="1"></div>
+
+    <footer class="c-foot">
+      <p class="c-display">Buena pizza, <em>buena noche.</em></p>
+      <p class="c-mono">Precios en pesos argentinos · Sujetos a cambios · 01/02</p>
+    </footer>
+  </section>
+
+  <!-- ============================ PÁGINA 2 -->
+  <section class="sheet">
+    <header class="c-head c-head--small">
+      <p class="c-display c-head__title">Carta <em>▼</em></p>
+      <p class="c-mono">LUCA PIZZA BMX</p>
+    </header>
+
+    <div class="c-grid" data-col="2"></div>
+
+    <div class="c-promo">
+      <p class="c-mono c-promo__k">▼ Promo de la casa</p>
+      <p class="c-promo__t" data-promo></p>
+    </div>
+
+    <div class="c-info">
+      <div class="c-qr">
+        <img src="assets/brand/qr-whatsapp.svg" alt="Código QR para pedir por WhatsApp">
+      </div>
+      <div class="c-info__txt">
+        <p class="c-display c-info__title">Pedí por <em>WhatsApp</em></p>
+        <p class="c-display c-info__phone" data-wa-display></p>
+        <p class="c-mono">Delivery · Para llevar · Para comer acá</p>
+        <p class="c-mono">Instagram <span data-ig-handle></span></p>
+      </div>
+      <ul class="c-hours" data-hours></ul>
+    </div>
+
+    <footer class="c-foot">
+      <p class="c-display">Casco siempre. <em>Nos vemos en el spot.</em></p>
+      <p class="c-mono">02/02</p>
+    </footer>
+  </section>
+
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script>
+(function () {
+  const D = window.LUCA, UI = window.UI;
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+
+  // Qué categorías van en cada página
+  const LAYOUT = { 1: ["pizzas", "calzones", "panchos"], 2: ["lomos", "burgers", "strombolis", "encargue"] };
+
+  $$("[data-brand]").forEach(el => el.src = D.brand[el.dataset.brand]);
+  $$("[data-est]").forEach(el => el.textContent = D.brand.est);
+  $$("[data-img-src]").forEach(el => { const i = D.images[el.dataset.imgSrc]; el.src = i.src; el.alt = i.alt || ""; });
+  $$("[data-wa-display]").forEach(el => el.textContent = D.contact.whatsappDisplay);
+  $$("[data-ig-handle]").forEach(el => el.textContent = "@" + D.contact.instagram);
+
+  const f = D.featured;
+  $("[data-f-name]").textContent = f.name;
+  $("[data-f-ing]").textContent = f.ingredients.join(" · ");
+  $("[data-f-price]").textContent = UI.price(f.price);
+  $("[data-promo]").textContent = f.promo || "";
+  if (!f.promo) $(".c-promo").remove();
+
+  const cat = (c, n) => `
+    <section class="c-cat">
+      <h2 class="c-cat__title"><span class="c-mono">${UI.pad(n)}</span><span class="c-display">${UI.esc(c.title)}</span></h2>
+      ${c.note ? `<p class="c-cat__note">${UI.esc(c.note)}</p>` : ""}
+      <ul>
+        ${c.items.map(it => `
+          <li class="c-item">
+            <span class="c-item__name">${UI.esc(it.name)}${it.tag ? ` <small>${UI.esc(it.tag)}</small>` : ""}</span>
+            <span class="c-item__dots"></span>
+            <span class="c-item__price">${it.price ? UI.price(it.price) : "Consultar"}</span>
+            ${it.desc ? `<span class="c-item__desc">${UI.esc(it.desc)}</span>` : ""}
+          </li>`).join("")}
+      </ul>
+    </section>`;
+
+  Object.entries(LAYOUT).forEach(([page, ids]) => {
+    $(`[data-col="${page}"]`).innerHTML = ids
+      .map(id => [D.menu.find(c => c.id === id), D.menu.findIndex(c => c.id === id) + 1])
+      .filter(([c]) => c).map(([c, n]) => cat(c, n)).join("");
+  });
+
+  $("[data-hours]").innerHTML = D.hours.map(h =>
+    `<li><span>${UI.esc(h.days)}</span><span>${h.open ? `${h.open} — ${h.close}` : "Cerrado"}</span></li>`).join("");
+
+  // Tema claro/oscuro (?claro en la URL también funciona)
+  const btn = $("[data-theme-toggle]");
+  const setLight = on => { document.documentElement.classList.toggle("light", on); btn.textContent = on ? "Versión oscura" : "Versión clara (ahorra tinta)"; };
+  setLight(location.search.includes("claro"));
+  btn.addEventListener("click", () => setLight(!document.documentElement.classList.contains("light")));
+})();
+</script>
+</body>
+</html>

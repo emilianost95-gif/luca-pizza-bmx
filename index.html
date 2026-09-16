@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>LUCA PIZZA BMX — Pizzería artesanal y pista BMX</title>
+  <meta name="description" content="Pizza artesanal al horno de barro, lomos, calzones y una pista BMX al fondo del local. Buena pizza, buena noche. Delivery y pedidos por WhatsApp.">
+  <meta name="theme-color" content="#0B0A09">
+  <script>document.documentElement.classList.add("js")</script>
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://lucapizzabmx.com/"><!-- TODO: dominio real -->
+
+  <!-- Open Graph / redes (los scrapers no ejecutan JS: editar acá a mano) -->
+  <meta property="og:type" content="restaurant">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="LUCA PIZZA BMX">
+  <meta property="og:title" content="LUCA PIZZA BMX — Buena pizza, buena noche.">
+  <meta property="og:description" content="Pizzería artesanal con pista BMX al fondo. Horno de barro, música y comunidad.">
+  <meta property="og:image" content="assets/img/og-image.jpg"><!-- TODO: URL absoluta al publicar -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/brand/favicon-180.png">
+
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/anton-400.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-400.woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+
+  <link rel="preload" as="image" href="assets/img/hero.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+<!-- Íconos SVG reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v16M6 14l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></symbol>
+  <symbol id="i-tri" viewBox="0 0 24 24"><path d="M2 3h20L12 22Z" fill="currentColor"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- =============================================================== NAVBAR -->
+<header class="nav" data-nav>
+  <div class="nav__inner container">
+    <a class="nav__logo" href="#top" aria-label="LUCA PIZZA BMX — inicio">
+      <img data-brand="logoWordmark" alt="LUCA PIZZA" width="120" height="67">
+      <span class="nav__logo-tag mono">BMX</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#carta">Menú</a>
+      <a href="#carta" data-tab-link="pizzas">Pizzas</a>
+      <a href="#spot">BMX</a>
+      <a href="#spot">El Spot</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="nav__right">
+      <span class="status mono" data-open-status hidden></span>
+      <a class="btn btn--fire btn--sm" data-wa href="#" target="_blank" rel="noopener">Pedir ahora</a>
+      <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menú móvil -->
+<div class="mnav" id="mobile-menu" data-mnav hidden>
+  <nav class="mnav__links" aria-label="Menú móvil">
+    <a href="#carta"><span class="mono">01</span>Menú</a>
+    <a href="#carta" data-tab-link="pizzas"><span class="mono">02</span>Pizzas</a>
+    <a href="#spot"><span class="mono">03</span>BMX · El Spot</a>
+    <a href="#nosotros"><span class="mono">04</span>Nosotros</a>
+    <a href="#eventos"><span class="mono">05</span>Eventos</a>
+    <a href="#contacto"><span class="mono">06</span>Contacto</a>
+  </nav>
+  <div class="mnav__foot">
+    <a class="btn btn--fire btn--block" data-wa href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
+    <p class="mono mnav__meta"><span data-coords></span> · <span data-ig-handle></span></p>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ================================================================= HERO -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero__media">
+    <figure class="media media--cover" data-img="hero" data-eager data-parallax="0.12"></figure>
+    <div class="hero__video" data-hero-video></div>
+    <div class="hero__shade"></div>
+  </div>
+
+  <figure class="hero__card media" data-img="fire" data-eager data-parallax="-0.08" aria-hidden="true"></figure>
+
+  <div class="hero__content container">
+    <p class="kicker mono" data-reveal>
+      <span class="dot"></span> Est. <span data-est></span> — Pizzería artesanal <span class="plus">+</span> Pista BMX
+    </p>
+
+    <h1 class="hero__title display" id="hero-title">
+      <span class="line"><span data-split>Venís por</span></span>
+      <span class="line"><span data-split>la pizza.</span></span>
+      <span class="line line--fire"><span data-split>Te quedás</span></span>
+      <span class="line line--fire"><span data-split>por el ride.</span></span>
+    </h1>
+
+    <p class="hero__lead" data-reveal>
+      Pizza artesanal al horno de barro, música hasta tarde y una pista de BMX real al fondo del local.
+      Un solo lugar. Toda la noche.
+    </p>
+
+    <div class="hero__ctas" data-reveal>
+      <a class="btn btn--fire" href="#carta">Ver menú <svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--ghost" href="#spot">Conocer el spot</a>
+    </div>
+
+    <div class="hero__meta mono" data-reveal>
+      <span><svg class="ico"><use href="#i-pin"/></svg><span data-coords></span></span>
+      <span class="hero__marker">Buena pizza, buena noche.</span>
+    </div>
+  </div>
+
+  <a class="scroll-cue mono" href="#nosotros" aria-label="Bajar a la siguiente sección">
+    <span>Scroll to ride</span>
+    <span class="scroll-cue__bar"><i></i></span>
+  </a>
+</section>
+
+<!-- Cinta -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" data-ticker="Buena pizza ▼ Buena noche ▼ Horno de barro ▼ Pista BMX ▼ Delivery ▼ Música ▼"></div>
+</div>
+
+<!-- ====================================================== 01 NO ES SOLO PIZZA -->
+<section class="intro section" id="nosotros" aria-labelledby="intro-title">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-num mono">01</span>
+      <span class="sec-label mono">Nosotros</span>
+      <span class="sec-rule"></span>
+    </header>
+
+    <div class="intro__grid">
+      <div class="intro__copy">
+        <h2 class="intro__title display" id="intro-title" data-reveal>
+          No es<br>solo <em>pizza.</em>
+        </h2>
+        <p class="intro__lead" data-reveal>
+          Luca empezó con un horno de barro y un patio. Después llegó la pista.
+          Hoy es el lugar donde se cruzan los que vienen a comer bien, los que vienen a andar
+          y los que no saben bien a qué vinieron, pero se quedan.
+        </p>
+
+        <ol class="formula" data-stagger>
+          <li><span class="mono">01</span><b>Pizza artesanal</b><small>Masa propia, horno de barro</small></li>
+          <li><span class="mono">02</span><b>BMX</b><small>Pista de tierra al fondo</small></li>
+          <li><span class="mono">03</span><b>Música</b><small>Patio, luces y DJ</small></li>
+          <li><span class="mono">04</span><b>Comunidad</b><small>Riders, vecinos y amigos</small></li>
+          <li class="is-result"><span class="mono">=</span><b>Una noche distinta</b><small>Cada vez</small></li>
+        </ol>
+      </div>
+
+      <div class="intro__visual">
+        <figure class="intro__img intro__img--a media" data-img="interior" data-parallax="0.06"></figure>
+        <figure class="intro__img intro__img--b media" data-img="dough" data-parallax="-0.1"></figure>
+        <p class="intro__caption mono"><svg class="ico ico--tri"><use href="#i-tri"/></svg> Fig. 01 — Adentro, 21:14 h</p>
+        <span class="intro__big display" aria-hidden="true">LUCA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== 02 CARTA -->
+<section class="menu section" id="carta" aria-labelledby="menu-title">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-num mono">02</span>
+      <span class="sec-label mono">La carta</span>
+      <span class="sec-rule"></span>
+      <a class="sec-link mono" href="carta.html" target="_blank" rel="noopener"><svg class="ico"><use href="#i-dl"/></svg>Carta imprimible</a>
+    </header>
+
+    <div class="menu__top">
+      <h2 class="menu__title display" id="menu-title" data-reveal>Del fuego<br>a la <em>tabla.</em></h2>
+      <p class="menu__intro" data-reveal>Masa artesanal, horno de barro y porciones de las que no se comparten fácil. Pedí para comer acá, para llevar o por delivery.</p>
+    </div>
+
+    <!-- Destacada: se completa desde data.js -->
+    <article class="featured" data-mount="featured"></article>
+
+    <!-- Tabs + paneles: se completan desde data.js -->
+    <div class="menu__board" data-mount="menu"></div>
+
+    <p class="menu__foot mono">Precios en pesos argentinos. Pueden variar sin previo aviso. · <a class="sec-link" href="assets/carta/carta-luca-pizza.pdf" download><svg class="ico"><use href="#i-dl"/></svg>Descargar carta PDF</a></p>
+  </div>
+</section>
+
+<!-- ============================================================ 03 THE SPOT -->
+<section class="spot" id="spot" aria-labelledby="spot-title" data-hscroll>
+  <div class="spot__sticky">
+    <div class="spot__head container">
+      <header class="sec-head sec-head--light">
+        <span class="sec-num mono">03</span>
+        <span class="sec-label mono">The Spot · BMX</span>
+        <span class="sec-rule"></span>
+        <span class="mono spot__progress" aria-hidden="true"><span data-hs-count>01</span> / <span data-hs-total>05</span></span>
+      </header>
+    </div>
+
+    <div class="spot__track" data-hs-track>
+      <div class="spot__panel spot__panel--intro">
+        <p class="marker">Detrás del local</p>
+        <h2 class="spot__title display" id="spot-title">Donde<br>empieza<br>el <em>ride.</em></h2>
+        <p class="spot__lead">Cruzás el patio, pasás el horno y ahí está: una pista de tierra hecha a mano, con luces toda la noche. Se mira, se aplaude y, si te animás, se anda.</p>
+      </div>
+
+      <figure class="spot__panel spot__panel--img media" data-img="track">
+        <figcaption class="spot__cap mono"><span>A</span> La pista — vista desde el techo</figcaption>
+      </figure>
+
+      <div class="spot__panel spot__panel--spec">
+        <p class="mono spot__spec-title">Ficha técnica</p>
+        <dl class="spec" data-mount="spot-features"></dl>
+        <p class="spot__rules display" data-mount="spot-rules"></p>
+      </div>
+
+      <figure class="spot__panel spot__panel--img media" data-img="hero">
+        <figcaption class="spot__cap mono"><span>B</span> La entrada — el cartel pintado a mano</figcaption>
+      </figure>
+
+      <figure class="spot__panel spot__panel--img spot__panel--wide media" data-img="patio">
+        <figcaption class="spot__cap mono"><span>C</span> El patio — antes de que arranque la noche</figcaption>
+      </figure>
+    </div>
+
+    <!-- Línea de pista: se dibuja con el scroll -->
+    <svg class="spot__line" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+      <path data-hs-line d="M0 50 H120 Q170 50 190 22 Q205 4 222 22 L240 50 H330 Q350 50 362 38 Q374 26 386 38 Q398 50 410 38 Q422 26 434 38 Q446 50 470 50 H560 Q610 50 640 12 L652 50 H700 L730 18 Q760 -2 790 50 H880 Q900 50 912 38 Q924 26 936 38 Q948 50 960 38 Q972 26 984 38 Q996 50 1030 50 H1200"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ======================================================== 04 LA NOCHE -->
+<section class="exp section" id="experiencia" aria-labelledby="exp-title">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-num mono">04</span>
+      <span class="sec-label mono">La experiencia</span>
+      <span class="sec-rule"></span>
+    </header>
+    <h2 class="exp__title display" id="exp-title" data-reveal>Una noche<br>en <em>Luca.</em></h2>
+
+    <div class="exp__grid">
+      <div class="exp__stage" aria-hidden="true" data-mount="exp-stage"></div>
+      <ol class="exp__steps" data-mount="experience"></ol>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== 05 GALERÍA -->
+<section class="gallery section" id="galeria" aria-labelledby="gal-title">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-num mono">05</span>
+      <span class="sec-label mono">Galería</span>
+      <span class="sec-rule"></span>
+      <a class="sec-link mono" data-ig href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-ig"/></svg><span data-ig-handle></span></a>
+    </header>
+    <h2 class="gallery__title display" id="gal-title" data-reveal>Fuego, tierra<br>y <em>luces.</em></h2>
+    <div class="masonry" data-mount="gallery"></div>
+  </div>
+</section>
+
+<dialog class="lightbox" data-lightbox aria-label="Imagen ampliada">
+  <button class="lightbox__close" type="button" data-lb-close aria-label="Cerrar"><svg class="ico"><use href="#i-close"/></svg></button>
+  <img alt="" data-lb-img>
+  <p class="lightbox__cap mono" data-lb-cap></p>
+</dialog>
+
+<!-- ========================================================== 06 EVENTOS -->
+<section class="events section" id="eventos" aria-labelledby="ev-title">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-num mono">06</span>
+      <span class="sec-label mono">Agenda</span>
+      <span class="sec-rule"></span>
+    </header>
+    <div class="events__top">
+      <h2 class="events__title display" id="ev-title" data-reveal>Lo que<br>se <em>viene.</em></h2>
+      <p class="events__intro" data-reveal>Jams, noches con DJ y competencias. Seguinos en Instagram para no perderte ninguna.</p>
+    </div>
+    <ul class="events__list" data-mount="events"></ul>
+  </div>
+</section>
+
+<!-- ====================================================== 07 TESTIMONIOS -->
+<section class="quotes section section--tight" aria-labelledby="q-title">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-num mono">07</span>
+      <span class="sec-label mono" id="q-title">Lo que dicen</span>
+      <span class="sec-rule"></span>
+    </header>
+    <div class="quotes__grid" data-mount="testimonials"></div>
+  </div>
+</section>
+
+<!-- ========================================================== CTA FINAL -->
+<section class="final" aria-labelledby="final-title">
+  <figure class="final__bg media media--cover" data-img="patio" data-parallax="0.1"></figure>
+  <div class="final__shade"></div>
+  <div class="final__inner container">
+    <p class="kicker mono" data-reveal><span class="dot"></span> <span data-open-status-long>Te esperamos</span></p>
+    <h2 class="final__title display" id="final-title">
+      <span class="line"><span data-split>¿Nos vemos</span></span>
+      <span class="line line--fire"><span data-split>en el spot?</span></span>
+    </h2>
+    <p class="final__lead" data-reveal>Pizza caliente. BMX. Buena gente.</p>
+    <div class="hero__ctas" data-reveal>
+      <a class="btn btn--fire btn--lg" href="#carta">Ver menú <svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--light btn--lg" href="#contacto">Venir al spot</a>
+    </div>
+  </div>
+  <div class="ticker ticker--final" aria-hidden="true">
+    <div class="ticker__track" data-ticker="Pizza ▼ BMX ▼ Noche ▼ Comunidad ▼"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- =============================================================== FOOTER -->
+<footer class="footer" id="contacto">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img class="footer__logo" data-brand="logoBadge" alt="LUCA PIZZA" width="140" height="137" loading="lazy">
+        <p class="footer__tag display">Buena pizza,<br>buena <em>noche.</em></p>
+      </div>
+
+      <div class="footer__cols">
+        <div class="fcol">
+          <h3 class="fcol__title mono">Dirección</h3>
+          <address>
+            <span data-address></span><br>
+            <span data-city></span>
+          </address>
+          <p class="mono fcol__muted" data-coords></p>
+        </div>
+        <div class="fcol fcol--hours">
+          <h3 class="fcol__title mono">Horarios</h3>
+          <ul class="hours" data-mount="hours"></ul>
+        </div>
+        <div class="fcol">
+          <h3 class="fcol__title mono">Contacto</h3>
+          <ul class="flinks">
+            <li><a data-wa href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg><span data-wa-display></span></a></li>
+            <li><a data-ig href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-ig"/></svg><span data-ig-handle></span></a></li>
+            <li><a data-maps href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-pin"/></svg>Cómo llegar</a></li>
+          </ul>
+        </div>
+        <div class="fcol">
+          <h3 class="fcol__title mono">Navegación</h3>
+          <ul class="flinks">
+            <li><a href="#carta">Menú</a></li>
+            <li><a href="#spot">BMX</a></li>
+            <li><a href="#eventos">Eventos</a></li>
+            <li><a href="carta.html" target="_blank" rel="noopener">Carta PDF</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="map" data-map>
+      <div class="map__ph">
+        <span class="mono" data-coords></span>
+        <button class="btn btn--ghost btn--sm" type="button" data-map-load>Cargar mapa</button>
+      </div>
+    </div>
+
+    <div class="footer__bottom mono">
+      <span>© <span data-year></span> LUCA PIZZA BMX</span>
+      <span>Casco siempre · Se anda con respeto</span>
+      <a href="#top">Volver arriba ↑</a>
+    </div>
+  </div>
+  <p class="footer__giant display" aria-hidden="true">LUCA</p>
+</footer>
+
+<!-- CTA fija en móvil -->
+<div class="dock" data-dock>
+  <a class="btn btn--light" href="#carta">Menú</a>
+  <a class="btn btn--fire" data-wa href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Pedir ahora</a>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
